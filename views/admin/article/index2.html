@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加文章</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/backView/wangEditor/release/wangEditor.min.js"></script>
+
+
+</head>
+<body>
+
+<h2>增加文章</h2>
+
+<div class="box">
+    <form action="/admin/article?edit=<%=currentData.id%> " method="post" enctype="multipart/form-data" name="arcticle">
+        <table>
+
+            <tr>
+                <td><label for="title">文章标题</label>:</td><td><input type="text" name="title" id="title"  value="<%= currentData.title%> "></td>
+            </tr>
+            <tr>
+                <td><label for="thumbnail">缩 略 图</label>:</td><td><input type="file" name="thumbnail" id="thumbnail"></td>
+            </tr>
+            <tr>
+                <td>所属栏目</td>
+                <td>
+                    <select name="typename">
+
+                        <% cateData.forEach(function(item){%>
+                        <option value=" <%=item.id %>"> <%=item.typename %></option>
+                        <% }) %>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>自定义属性:</td>
+                <td>
+                    <ul class="tdul">
+                        <li>
+                            <label for="h">头条[h]</label>
+                            <input type="checkbox" name="flags[]"  id="h"   value="h">
+                        </li>
+                        <li>
+                            <label for="c">推荐[c]</label>
+                            <input type="checkbox" name="flags[]"  id="c"  value="c">
+                        </li>
+                        <li>
+                            <label for="b">加粗[c]</label>
+                            <input type="checkbox" name="flags[]"  id="b"  value="b">
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="keywords">关键字</label>:</td><td><input type="text" name="keywords" id="keywords" value="<%= currentData.keywords%> "></td>
+            </tr>
+            <tr>
+                <td><label for="descriptions">描述</label>:</td><td><textarea name="descriptions" id="descriptions" cols="80" rows="6" value="<%= currentData.descriptions%>"></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="content">文章正文</label>:</td>
+                <td>
+                    <!---    <textarea id="content" name="content"  > </textarea>--->
+                    <div id="div1">
+                        <%-currentData.content%>
+                    </div>
+                    <textarea id="content" name="content"  style="width:100%; height:200px;" hidden ></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="author">作者</label>:</td><td><input type="text" name="author" id="author" value="<%= currentData.author%>"></td>
+            </tr>
+
+            <tr>
+                <td><input type="submit"  value="提交" name="submit"></td>
+                <td><input type="reset"  value="重填"></td>
+            </tr>
+        </table>
+
+
+
+    </form>
+</div>
+
+<script>
+    var forms=document.forms['arcticle'];
+    var submitobn=forms['submit'] ;
+    var title=forms['title'] ;
+    var thumbnail=forms['thumbnail'] ;
+    var content=$("#content").val()  ;
+
+    submitobn.onclick=function(ev){
+        var ev=ev||window.event;
+        if(title.value==""||thumbnail.value=="" ){
+            //  ev.preventDefault();
+            alert("标题 缩略图 正文必须全部填写")    ;
+            return false
+        }
+    }
+</script>
+
+
+
+<style>
+    body{
+        padding-bottom: 50px; background: white;
+    }
+    input#title {
+        padding: 5px 0;
+        width: 51%;
+    }
+    div#div1 {
+        width: 100%;
+    }    select {
+             padding: 5px 38px;
+             /* margin: 3px 0; */
+         }
+    input#keywords {
+        padding: 5px 0;
+        width: 88%;
+    }
+    #descriptions{
+        resize: none;
+    }
+    td{
+        vertical-align: top;
+    }
+    .w-e-text {
+        padding: 0 10px;
+        width: 700px!important;
+        overflow-y: scroll;
+        background: rgb(255, 255, 255);
+    }
+    input[type="reset"] {
+        width: 200px;
+        height: 31px;
+        position: absolute;
+        left: 38%;
+        background: rgba(0, 88, 255, 0.84);
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+        border: none;
+        box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+        border-radius: 4px;
+    }
+
+    input[type="submit"]{
+        width: 200px;
+        height: 31px;
+        position: absolute;
+        left: 12%;
+        background: rgba(0, 88, 255, 0.84);
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+        border: none;
+        box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+        border-radius: 4px;
+    }
+    .tdul{overflow: hidden;    display: table-cell;    padding: 0;}
+    .tdul li{
+        float: left; list-style: none; margin-left: 10px}
+</style>
+<script type="text/javascript">
+    console.log("ceshi")
+    var E = window.wangEditor
+    var editor = new E('#div1')
+    var $text1 = $('#content')
+
+    editor.customConfig.onchange = function (html) {
+        // 监控变化，同步更新到 textarea
+        $text1.val(html)
+    }
+
+    //editor.customConfig.uploadImgShowBase64 = true
+    editor.customConfig.debug=true;
+    editor.customConfig.uploadImgServer = '/upload'
+    editor.create()
+    // 初始化 textarea 的值
+    $text1.val(editor.txt.html())
+</script>
+
+</body>
+</html>

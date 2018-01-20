@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    window.addEventListener('load',function(){
+                var refer=document.referrer;
+         console.log("来源网站:",refer);
+        if(window.confirm("当前栏目名已经存在，是否重新填写")){
+                   window.location.assign(refer)
+        } else {
+            window.location.reload("/admin/") ;
+        }
+    },false)
+</script>
+</body>
+</html>

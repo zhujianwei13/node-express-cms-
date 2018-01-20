@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= data.title%></title>
+</head>
+<body>
+<script>
+
+    window.addEventListener("load",function(){
+
+
+        //表单验证
+        function checkform(){
+            alert("表单开始验证！");
+            return false
+        }
+
+
+
+
+
+        //点击时候关闭
+        document.getElementById("close").onclick=function(){
+            document.getElementsByClassName("box")[0].style.display="none"   ;
+            window.location.assign("/admin/user")   ;
+        }
+
+        function isnull(val){
+            alert("222")
+            if(this.value==" "||null){
+                alert(val+"值不能为空")   ;
+                return false;
+            } else {
+                return true
+
+
+            }
+        }
+
+        var forms=document.forms['adduser'];
+        var submitobn=forms['submit'] ;
+        var username=forms['username'] ;
+        var himg=forms['himg'] ;
+        var password=forms['password']  ;
+        var sex=forms['sex'];
+        var  email=forms['email'];
+        var  tel=forms['tel'];
+
+        submitobn.onclick=function(ev){
+            console.log("username.value:",username.value)
+            var ev=ev||window.event;
+            if(username.value==""||password.value==""||himg.value==""||sex.value==""||email.value==""||tel.value=="" ){
+                //  ev.preventDefault();
+                alert("内容必须全部填写")    ;
+                return false
+            }
+        }
+
+
+
+
+
+    },false)
+
+</script>
+<style>
+    body{background: white}
+    a{text-decoration: none;  color:#666}
+    .bs{background: rebeccapurple}
+
+    .box{  position: fixed;  top: 0;  z-index: 99;  background: rgba(0,0,0,0.9);  height: 100%;  width: 800px;  }
+    form#post {  width: 60%;  margin: 0 auto;  }
+    .box label{display: block;    color: rgb(255, 255, 255);  margin-top: 30px;}
+    .box input{margin-left: 15px; width: 300px;}
+    input#submit {  background: rgb(255, 69, 0);  color: rgb(255, 255, 255);  line-height: 37px;  font-size: 19px;  border: none;  box-shadow: 2px 2px 2px rgba(0,0,0,0.1);  border-radius: 10px;  position: relative;
+        top: 30px;  left: 35px;  }
+    input#close {
+        color: rgb(255, 255, 255);
+        background: rgb(255, 0, 0);
+        border: none;
+        padding: 10px 0;
+        border-radius: 10px;
+        margin-top: 40px;
+        margin-left: 50px;
+        box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+    }
+    .box{
+        display: none;
+    }
+</style>
+<div class="box" style="display: block;">
+
+    <form id="post" name="adduser" enctype="multipart/form-data" method="post" action="http://www.node.com:81/admin/user/edit?edit=<%= data.user.id %>">
+        <label>姓名<input type="text" name="username"  value="<%= data.user.username%>"></label>
+        <label>头像<input type="file" name="himg" value="<%= data['user'].timg  %>"></label>
+        <label>密码<input type="text" name="password"   value="<%= data['user'].password  %>"></label>
+        <label>性别<input type="type" name="sex" value="<%if(data['user'].sex==0){  %>   女 <% }else { %> 男 <% } %>  "></label>
+        <label>邮箱<input type="email" name="email"  value="<%= data['user'].email  %>"></label>
+        <label>电话<input type="number" name="tel" value="<%= data['user'].tel  %>"></label>
+        <input type="submit" id="submit">
+        <input type="button" name="close" id="close" value="关闭">
+    </form>
+</div>
+</body>
+</html>

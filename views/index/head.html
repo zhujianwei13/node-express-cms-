@@ -1,0 +1,108 @@
+
+<!--------------------------顶部logo**********************--------------------->
+<header id="header">
+    <section id="toplogo">
+        <!--左侧logo-->
+        <div id="logonumL" onclick="onClickSWT();return false">
+            <div><img src="/foreView/images/logo.png" alt=""></div>
+            <div>
+                <h1>沈阳沈北沈医医院</h1>
+                <p>Shenyang Shen Medical Hospital</p>
+            </div>
+        </div>
+        <!--中间logo-->
+        <div id="logonumM"  onclick="onClickSWT();return false">
+            <div><img src="/foreView/images/logo2.png" alt=""></div>
+            <div>
+                <p>医保定点医院</p>
+            </div>
+        </div>
+
+        <!--右侧logo-->
+        <div id="logonumR">
+            <div><img src="/foreView/images/logo3.png" alt=""></div>
+            <div  onclick="publictel() ">
+                <p>免费热线：</p>
+                <p> 400-8722-120</p>
+            </div>
+        </div>
+    </section>
+</header>
+
+<!--------------------------栏目航部分-************************------------------->
+
+
+<nav id="nav">
+    <ul class="navlist">
+        <li class="hover">
+            <a href="/" target="_self">网站首页 </a>
+        </li>
+
+         <% cateData.forEach(function(item){  %>
+        <li>
+            <a href="/index/list?page=1&tid=<%=item.id%>"  target="_self"><%=item.typename%> </a>
+        </li>
+
+         <%  }) %>
+
+        <li>
+            <a href="#" target="_self">来院路线 </a>
+        </li>
+
+        <li>
+            <a href="#" target="_self">预约挂号 </a>
+        </li>
+    </ul>
+</nav>
+
+<!--------------------------banner 部分-*********************-------------------->
+
+<section id="banner">
+    <!-----------bannerr图列表----------->
+    <ul>
+        <li><img src="/foreView/images/banner.jpg" alt=""></li>
+    </ul>
+</section>
+<!-----------病种导航列表列表----------->
+<section class="sickNav">
+    <dl>
+        <dt>神经内科</dt>
+        <dd>
+            <ul>
+                <li class="bordertop borderleft"><a href="/index/list?page=1&tid=34">抑郁症 </a></li>
+                <li class="bordertop"><a href="/index/list?page=1&tid=16">植物神经紊乱 </a></li>
+                <li class="bordertop"><a href="/index/list?page=1&tid=17">头晕头痛 </a></li>
+                <li class="borderleft"><a href="/index/list?page=1&tid=18">神经衰弱 </a></li>
+                <li><a href="/index/list?page=1&tid=35">失眠症 </a></li>
+                <li><a href="/index/list?page=1&tid=36">神经官能症 </a></li>
+            </ul>
+        </dd>
+    </dl>
+
+    <dl>
+        <dt>精神心理科</dt>
+        <dd>
+            <ul>
+                <li class="bordertop borderleft"><a href="/index/list?page=1&tid=38">焦虑症 </a></li>
+                <li class="bordertop"><a href="/index/list?page=1&tid=22">强迫症 </a></li>
+                <li class="bordertop"><a href="/index/list?page=1&tid=37">疑虑症 </a></li>
+                <li class="bordertop"><a href="/index/list?page=1&tid=23">躁狂症 </a></li>
+                <li class="borderleft"><a href="/index/list?page=1&tid=24">精神分裂 </a></li>
+                <li><a href="/index/list?page=1&tid=25">恐惧症 </a></li>
+                <li><a href="/index/list?page=1&tid=26">精神障碍 </a></li>
+            </ul>
+        </dd>
+    </dl>
+    <dl>
+        <dt>面神经科</dt>
+        <dd>
+            <ul>
+                <li class="bordertop borderleft"><a href="/index/list?page=1&tid=27">面肌痉挛 </a></li>
+                <li class="bordertop"><a href="/index/list?page=1&tid=28">面 瘫 </a></li>
+                <li class="bordertop"><a href="/index/list?page=1&tid=29">面神经炎 </a></li>
+                <li class="borderleft"><a href="/index/list?page=1&tid=30">三叉神经痛 </a></li>
+                <li><a href="/index/list?page=1&tid=31">面瘫后遗症 </a></li>
+            </ul>
+        </dd>
+    </dl>
+</section>

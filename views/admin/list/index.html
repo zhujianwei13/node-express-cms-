@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+           function isdel(){
+               if(window.confirm("是否删除文章")){
+                   return  ;
+
+               }
+           }
+</script>
+<div class="nav">
+    <ul>
+        <li>所有栏目></li>
+        <li>文档列表</li>
+    </ul>
+</div>
+<div class="box">
+     <ul>
+          <li><div>id</div><div>文章标题</div> <div>发布人</div>  <div>更新时间</div><div>文章操作</div></li>
+         <% listData.forEach(function(item){%>
+         <li>
+             <div> <%=item.id%></div>
+             <div><a href="/index/article?tid=<%=item.typeid%>&aid=<%=item.id%>"  target="_top"> <%=item.title%> </a></div>
+             <div><%=item.author %></div>
+             <div><a href="/index/article?aid=<%=item.id%>"> <%=item.updatetime %> </a></div>
+             <div><a href="/admin/article?edit=1&aid=<%=item.id%>">编辑</a><a href="/admin/article/del?page=1&aid=<%=item.id%>" about="" onclick="isdel()">删除</a><a href="/admin/article">添加文章</a></div>
+         </li>
+         <% })%>
+     </ul>
+ </div>
+
+          <div class="pagelist">
+              <ul>
+                  <li><a href="/admin/list?page=<%=pagedata.first%>">首页</a></li>
+                  <% if(pagedata.currentPage>1) { %>
+                  <li><a href="/admin/list?page=<%=pagedata.currentPage-1%>">上一页</a></li>
+                  <% } else{%>
+                  <li>当前为第一页</li>
+
+                  <% }%>
+                  <% for(var i=0; i< pagedata.totalPages; i++) { %>
+                  <li><a href="/admin/list?page=<%=i+1%>"><%=i+1%></a></li>
+                  <% }%>
+
+                  <% if(pagedata.currentPage< pagedata.totalPages) { %>
+                  <li><a href="/admin/list?page=<%=parseInt(pagedata.currentPage)+1%>">下一页</a></li>
+                  <% } else{%>
+                  <li>当前为最后页</li>
+                  <% }%>
+
+                  <li><a href="/admin/list?page=<%=pagedata.end%>">末页</a></li>
+              </ul>
+          </div>
+</body>
+</html>
+<style>
+    body{background: white}
+    .box {
+        width: 100%; font-size: 12px;;
+    }
+    .box  li{list-style: none; margin: 10px 0; display: flex; justify-content: flex-start; align-items: center;margin-top: 20px; }
+    .box li:nth-child(2){
+        text-align: left;
+    }
+    .box li>div{margin-left: 15px;}
+    .box li>div:nth-child(2){width: 300px}
+    .box li>div:nth-child(3){width: 100px}
+    .box li>div:nth-child(4){width: 100px}
+    .box li>div:nth-child(5){width: 250px;    text-align: right;}
+    .box li:first-child{ background: deepskyblue;color: white;    padding: 10px;}
+    .box li:first-child>div:first-child{ background: deepskyblue;    padding: 0px; }
+    .box li>div:first-child{background: darkred;color: white;    padding: 5px;}
+    .box li>div a:hover{ color: #ff3820;font-size: 14px;
+    }
+
+       a{text-decoration: none; color: black;  font-size: 12px;;}
+    .box li>div:last-child a {
+        margin-right: 10px;
+        padding: 5px;
+        background: rgb(0, 135, 255);
+        color: rgb(255, 255, 255);
+    }
+
+    .pagelist{margin: 15px 0}
+    .pagelist ul{
+        overflow: hidden;}
+    .pagelist li{    color: white;;
+        float: left; list-style: none; margin-left: 10px; padding: 10px; background:rgb(65, 105, 225) }
+    .pagelist li a{color: white}
+    .pagelist li:hover{ cursor: pointer}
+
+    .nav{margin: 15px 0}
+    .nav ul{overflow: hidden; }
+    .nav li:first-child{margin-left: 0px}
+    .nav li{list-style: none;
+        float: left; margin-left: 15px; font-size: 22px; color: black}
+</style>

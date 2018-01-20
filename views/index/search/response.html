@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+      <script>
+
+       window.onload=function(){
+           var ref=document.referrer;
+           if(window.confirm("您没有搜索到您想搜的内容，是否重新搜索")){
+               window.location.assign(ref)
+           }
+
+         document.getElementById("fh").href=ref
+
+       }
+
+
+
+      </script>
+
+
+
+<ul>
+    <li><a href="/">返回首页</a></li>
+  <li>  <a href="http://www.baidu.com"  id="fh">返回上一页</a></li>
+</ul>
+</body>
+</html>
