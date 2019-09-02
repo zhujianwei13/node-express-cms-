@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= data.title%></title>
+    <script src="/backView/js/sendAjax.js"></script>
+</head>
+<body>
+
+<style>
+    body{background: white}
+    thead th{padding: 10px 40px; background: brown;  color: white;}
+    tr td{ padding: 10px 40px;  }
+    a{text-decoration: none;  color:#666}
+    .bs{background: rebeccapurple}
+    .bs a{color: white}
+    .adduser{background: royalblue;color: white;width: 800px;;  padding:10px 0; text-align: center}
+    .adduser a{  color: white;}
+    .box{  position: fixed;  top: 0;  z-index: 99;  background: rgba(0,0,0,0.9);  height: 100%;  width: 800px;  }
+    form#post {  width: 60%;  margin: 0 auto;  }
+    .box label{display: block;    color: rgb(255, 255, 255);  margin-top: 30px;}
+    .box input{margin-left: 15px; width: 300px;}
+    input#submit {  background: rgb(255, 69, 0);  color: rgb(255, 255, 255);  line-height: 37px;  font-size: 19px;  border: none;  box-shadow: 2px 2px 2px rgba(0,0,0,0.1);  border-radius: 10px;  position: relative;
+  top: 30px;  left: 35px;  }
+    input#close {
+        color: rgb(255, 255, 255);
+        background: rgb(255, 0, 0);
+        border: none;
+        padding: 10px 0;
+        border-radius: 10px;
+        margin-top: 40px;
+        margin-left: 50px;
+        box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+    }
+    .box{
+        display: none;
+    }
+    .pagelist{margin: 15px 0}
+    .pagelist ul{
+          overflow: hidden;}
+    .pagelist li{    color: white;;
+        float: left; list-style: none; margin-left: 10px; padding: 10px; background:rgb(65, 105, 225) }
+    .pagelist li a{color: white}
+    .pagelist li:hover{ cursor: pointer}
+</style>
+
+<script>
+    function  isdel(msg){
+        if(window.confirm(msg)){
+            return true
+        }
+    }
+
+    var createform={
+       createInput:function (type,name){
+        var val=document.createElement("input")
+        val.type=type;
+       if(name){
+           val.name=name;
+       }
+        return val;
+    },
+
+        createLabel: function (val,input){
+        var labels=document.createElement("label")
+        var text=document.createTextNode(val);
+        labels.appendChild(text);
+        labels.appendChild(input) ;
+        return labels;
+    },
+
+        adduser: function (url){
+
+        //1 创建父div
+        var div=document.createElement("div");
+        div.className='box';
+        //创建form
+        var form=document.createElement("form");
+        form.id="post";
+        form.name="adduser"
+       form.enctype="multipart/form-data";
+        form.method="post";
+        form.action=url;
+        //创建用户名
+        var userinput=this.createInput("text","username") ;
+
+        form.appendChild(this.createLabel("姓名",userinput)) ;
+
+        //创建头像
+     var files=this.createInput("file","himg") ;
+        form.appendChild( this.createLabel("头像",files) )
+        //创建密码
+        var pwd=this.createInput("text","password");
+        form.appendChild(this.createLabel("密码",pwd)  )
+        //创建性别
+        var  sexs=this.createInput("type","sex");
+        form.appendChild(  this.createLabel("性别",sexs) )
+        //创建性邮箱
+        var mail= this.createInput("email","email");
+        form.appendChild( this.createLabel("邮箱",mail)  )
+        //创建电话
+        var tels= this.createInput("number","tel");
+        form.appendChild(this.createLabel("电话",tels) )
+
+        //创建提交按钮
+        var button=this.createInput("submit")
+        button.id = "submit";
+        form.appendChild(button) ;
+     //创建关闭按钮
+       var close=this.createInput("button","close") ;
+            close.id="close";
+            close.value ="关闭";
+            form.appendChild(close)
+            //把form提交到div
+        div.appendChild(form) ;
+        console.log("表单添加完毕")
+        document.body.appendChild(div);
+
+    }
+    }
+
+
+      window.addEventListener("load",function(){
+
+
+           //表单验证
+          function checkform(){
+              alert("表单开始验证！");
+              return false
+          }
+
+
+          //初始化加载表单
+          createform.adduser('http://www.node.com:81/admin/user')
+          //点击时候   显现
+          document.getElementById("obn").onclick=function(){
+              document.getElementsByClassName("box")[0].style.display="block"
+          }
+
+          //点击时候关闭
+          document.getElementById("close").onclick=function(){
+              document.getElementsByClassName("box")[0].style.display="none"
+          }
+
+          function isnull(val){
+              alert("222")
+              if(this.value==" "||null){
+                  alert(val+"值不能为空")   ;
+                  return false;
+              } else {
+                  return true
+
+
+              }
+          }
+
+          var forms=document.forms['adduser'];
+          var submitobn=forms['submit'] ;
+          var username=forms['username'] ;
+          var himg=forms['himg'] ;
+          var password=forms['password']  ;
+          var sex=forms['sex'];
+          var  email=forms['email'];
+          var  tel=forms['tel'];
+
+          submitobn.onclick=function(ev){
+                   console.log("username.value:",username.value)
+              var ev=ev||window.event;
+              if(username.value==""||password.value==""||himg.value==""||sex.value==""||email.value==""||tel.value=="" ){
+                //  ev.preventDefault();
+                  alert("内容必须全部填写")    ;
+                  return false
+              }
+          }
+
+
+
+
+
+      },false)
+
+</script>
+
+    <table>
+           <thead>
+           <th>id</th>      <th>用户名</th>  <th>邮箱</th>  <th>电话</th>  <th>编辑</th><th>删除</th>
+           </thead>
+
+
+    <% data['user'].forEach(function(item){%>
+
+    <tr>
+
+        <td> <%=item.id %>  </td>
+        <td>   <%=item.username %>    </td>
+
+               <% if(item.email!=null) { %>
+        <td>   <%=item.email %>  </td>
+               <% } else { %>
+        <td>  当前邮箱不存在</td>
+               <% }  %>
+        <% if(item.tel!=null) { %>
+        <td>   <%=item.tel %>  </td>
+        <% } else { %>
+        <td>  电话没填</td>
+        <% }  %>
+
+        <td class="bs"><a href="/admin/user/edit?edit=<%=item.id %>&page=1"> 编辑</a></td>
+        <td class="bs">  <a href="/admin/user?del=<%=item.id %>&page=1"  onclick="isdel('是否删除用户')">删除</a></td>
+
+
+    </tr>
+
+    <% }) %>
+
+    </table>
+
+<div class="pagelist">
+    <ul>
+        <li><a href="/admin/user?page=<%=pagedata.first%>">首页</a></li>
+         <% if(pagedata.currentPage>1) { %>
+        <li><a href="/admin/user?page=<%=pagedata.currentPage-1%>">上一页</a></li>
+        <% } else{%>
+        <li>当前为第一页</li>
+
+        <% }%>
+    <% for(var i=0; i< pagedata.totalPages; i++) { %>
+        <li><a href="/admin/user?page=<%=i+1%>"><%=i+1%></a></li>
+        <% }%>
+
+        <% if(pagedata.currentPage< pagedata.totalPages) { %>
+        <li><a href="/admin/user?page=<%=parseInt(pagedata.currentPage)+1%>">下一页</a></li>
+        <% } else{%>
+        <li>当前为最后页</li>
+        <% }%>
+
+        <li><a href="/admin/user?page=<%=pagedata.end%>">末页</a></li>
+    </ul>
+</div>
+
+                               <!---/admin/adduser--->
+<div class="adduser"    id="obn">增加用户</div>
+
+</body>
+</html>
+

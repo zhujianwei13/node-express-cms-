@@ -1,0 +1,67 @@
+<footer>
+
+
+    <nav id="navbottom">
+        <ul class="navlist">
+            <li>
+                <a href="#">网站首页 </a>
+            </li>
+
+
+            <% cateData.forEach(function(item){  %>
+            <li>
+                <a href="/index/list?page=1&tid=<%=item.id%>"><%=item.typename%> </a>
+            </li>
+
+            <%  }) %>
+
+
+            <li>
+                <a href="#">来院路线 </a>
+            </li>
+
+            <li>
+                <a href="#">预约挂号 </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!--底部地址----------------->
+    <section class="divbox">
+
+
+        <!--核心内容--->
+        <div class="footer">
+
+            <div onclick="onClickSWT();return false">
+                <p><img src="/foreView/images/foot.png" alt=""></p>
+                <p>沈阳沈北沈医医院</p>
+            </div>
+
+            <div>
+                <div class="tel" onclick="publictel()"> <p><img src="/foreView/images/foot2.png" alt=""></p>
+                    <div>
+                        <p>健康热线</p>
+                        <p> 400-8722-120</p>
+                    </div>
+                </div>
+
+                <div class="address">
+                    <p>
+                        <span>本院地址</span>：沈北新区道义南大街50号
+                    </p>
+                    <p><span>门诊时间</span>：8：00-17：00</p>
+                </div>
+            </div>
+
+            <div class="wx">
+                <div><img src="/foreView/images/wx.jpg" alt=""></div>
+                <div>
+                    <p>扫一扫</p>
+                    <p>微信公众号</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</footer>

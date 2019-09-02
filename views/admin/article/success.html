@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加成功后</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+<style>
+    body{background: white;
+    }
+    .box{margin-top:20%; }
+    .box ul{overflow: hidden}
+    .box li{float: left; margin-left: 10px; padding: 5px; font-size: 14px; list-style: none}
+    .box li a{color: black;padding-bottom: 5px}
+</style>
+
+<div class="box">
+               <ul>
+
+                   <li>请选择你的后续操作:</li>
+                   <li><a href="/admin/article">【继续发布文章】</a></li>
+                   <li><a href="/index/article?aid=<%=data.id%>"  target="_top">【查看文章】</a></li>
+                   <li><a href="/admin/article?edit=1&aid=<%=data.id%>">【更改文章】</a></li>
+                   <li><a href="/admin/list?page=1">【已发布文章管理】</a></li>
+                   <li><a href="/admin/list?page=1&tid=<%=data.typeid%>">【记忆的列表页】</a></li>
+
+               </ul>
+           </div>
+</body>
+</html>

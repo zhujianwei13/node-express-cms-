@@ -1,0 +1,160 @@
+<div class="articleR">
+    <!----------------医院简介------------------->
+    <div class="articleRbox">
+        <h3>
+            <img src="/foreView/images/j1.png" alt="">
+            推荐文章
+        </h3>
+        <div class="m1">
+            <a href="/index/article?tid=1&aid=<%= rightData.id%>"><img src="/<%= rightData.thumbnail%>"  style="width: 240px; height: 160px;">  </a>
+        </div>
+
+        <div class="m2 inline">
+            <div class="cursor" onclick="onClickSWT();return false"><img src="/foreView/images/j2.png" alt=""><span>了解医院</span></div>
+            <div class="cursor" onclick="onClickSWT();return false"><img src="/foreView/images/j3.png" alt=""><span>咨询医院</span></div>
+        </div>
+
+        <div class="m3">
+            <%= rightData.descriptions%> <a href="/index/article?tid=1&aid=<%= rightData.id%>">【详情】</a>
+        </div>
+    </div>
+
+    <!----------------医院简介------------------->
+
+    <div class="articleRbox margint">
+        <h3>
+            <img src="/foreView/images/j4.png" alt="">
+            本周出诊专家
+        </h3>
+
+        <div class="m3 inline zj">
+            <div>
+                <img src="/foreView/images/j5.jpg" alt="">
+            </div>
+
+            <div>
+                <h2>洪 磊</h2>
+                <p>上海精神卫生中心专家</p>
+                <p><img src="/foreView/images/j6.jpg" alt=""></p>
+            </div>
+        </div>
+
+
+        <div class="yyrs">
+            当日预约人数：<span>26</span>人<a href="#" onclick="onClickSWT();return false">立即咨询&gt;&gt;</a>
+        </div>
+
+        <div class="m3" style="color:#515151">
+            提示：为提高服务质量，专家均限量预约就诊。
+        </div>
+
+        <div class="m3">
+
+            <ul class="zxlist">
+                <li class="cursor" onclick="onClickSWT();return false"> <img src="/foreView/images/h1.png" alt="" >在线咨询</li>
+                <li class="cursor" onclick="onClickSWT();return false"><img src="/foreView/images/h2.png" alt="" > 网上预约</li>
+                <li class="cursor" onclick="onClickSWT();return false"><img src="/foreView/images/h3.png" alt="">就医指南</li>
+                <li class="cursor" onclick="onClickSWT();return false"><img src="/foreView/images/h4.png" alt="">了解医院</li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+    <!----------------医院简介------------------->
+
+    <div class="articleRbox margint">
+        <h3>
+            <img src="/foreView/images/j8.png" alt="">
+            患者心声
+        </h3>
+
+        <div class="m3">
+
+            <ul class="hzxs">
+                <li>
+                    <a href="#">
+                        <span><img src="/foreView/images/j9.png" alt=""></span>
+                        <span>精神心理科患者杨婷感谢信</span>
+                    </a>
+
+                    <div>
+                        尊敬的专家医生：感谢你们陪伴我走向康复之路，感谢你们无微不至的关怀与帮助，你们...
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span><img src="/foreView/images/j9.png" alt=""></span>
+                        <span>精神心理科患者王珂感谢信</span>
+                    </a>
+
+                    <div>
+                        尊敬的专家医生：感谢你们陪伴我走向康复之路，感谢你们无微不至的关怀与帮助，你们...
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!----------------预约在线------------------->
+    <div class="articleRbox margint">
+        <div class="m3">
+
+            <div class="zxyytitle inline">
+                <div class="xian"></div>
+                <div>在线预约挂号</div>
+                <div class="xian"></div>
+            </div>
+
+            <p class="margint" style="font-size: 16px;color: #b1b1b1;text-align: center">无需排队 优先看病</p>
+        </div>
+
+
+
+
+        <div class="formRighr m3">
+
+            <form action="/admin/order"  method="post"   name="order">
+                <ul>
+                    <li>
+                        <label for="name">患者姓名:</label>
+                        <input type="text" name="name"  id="name">
+                    </li>
+                    <li>
+                        <label for="tel">联系电话:</label>
+                        <input type="text" name="tel"  id="tel">
+                    </li>
+                    <li class="des">
+                        <label for="des">目前病情:</label>
+                        <textarea name="des" id="des" cols="20" rows="5"  ></textarea>
+                    </li>
+                      <li>
+                          <input type="hidden" name="url" >
+                      </li>
+                    <li>
+                        <button type="submit">
+                            <img src="/foreView/images/j12.png" alt="">快速点击预约
+                        </button>
+                    </li>
+                </ul>
+
+
+                <script>
+
+                    window.onload=function(){
+                        document.forms["order"].elements["url"].value=location.href
+                    }
+                </script>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+</div>

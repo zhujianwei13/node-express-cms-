@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function  isdel(){
+        if(window.confirm("是否删除")){
+//alert("确定");
+            return true;
+        }else{
+//alert("取消");
+            return false;
+        }
+    }
+
+</script>
+<div class="box">
+    <div class="nav">
+        <h2>友情链接管理</h2>
+        <div><a href="/admin/flink/add">增加链接</a></div>
+        <div><a href="javascript:" onclick="window.history.go(-1)">返回</a></div>
+    </div>
+    <ul>
+      <li>  <div>id</div><div>网站名称</div><div>添加时间</div><div>管理</div></li>
+        <% data.forEach(function(item){ %>
+        <li>
+            <div><%=item.id%></div><div><a href="<%=item.url%>"><%=item.webname%></a></div><div><%=item.datetimes%></div>
+            <div>
+            <a href="/admin/flink/update?id=<%=item.id%>">更改</a>
+            <a href="/admin/flink/del?id=<%=item.id%>"   data-val="<%=item.webname%>"  onclick="isdel()">删除</a>
+        </div>
+        </li>
+            <% }) %>
+    </ul>
+</div>
+
+<style>
+    body{background: white;}
+    *{padding: 0%; margin: 0}
+    a{text-decoration: none}
+    li{list-style: none}
+    h2{font-size: 20px}
+     .nav{ overflow: hidden}
+    .nav div{float: left;background: #ff85bf; color: white; padding: 10px ;}
+    .nav h2{margin-left: 20px; float: left;    line-height: 44px;}
+    .nav div:last-child{ margin-left: 100px}
+    .nav a{color: white; font-size: 20px}
+    .nav a:hover{font-size: 22px; color: #00a0e9}
+    .box ul{overflow: hidden}
+    .box li{margin-top: 10px;}
+    .box li:first-child{ background: #ff85bf; text-align: center; color: white; display: inline-block}
+    .box li>div:first-child{   background: #ff85bf; text-align: center; color: white; margin-left: 0   }
+    .box li>div{   margin-left: 5px; background: #ff85bf; text-align: center; color: white;    }
+    .box li>div a{color: white}
+    .box li>div{display: inline-block; padding: 10px 80px;text-align: center}
+</style>
+</body>
+</html>

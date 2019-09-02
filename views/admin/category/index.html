@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>栏目页</title>
+    <script src="/backView/js/jquery-1.4.4.min.js"></script>
+</head>
+<body>
+
+           <div id="box">
+                <div id="top">
+                       <div><a href="/admin/category">网站栏目管理</a></div>
+                       <div class="topul">
+                           <ul>
+                               <li><a href="/admin/category/addTopCate">增加顶级栏目</a></li>
+                               <li><a href="#">批量增加栏目</a></li>
+                               <li><a href="#">更新栏目排序</a></li>
+                           </ul>
+                       </div>
+                </div>
+
+               <div id="center">
+                   <!---num1-->
+                   <% alldata.forEach(function(item){%>
+                   <dl>
+                       <dt>
+                            <ol>
+                       <li>
+
+                           <a href="javascript:" data-topid="<%=item.id %>"  class="obnNavs">+</a>
+
+                           </li>
+                       <li>
+                           <a href="/admin/list?page=1&tid=<%=item.id %>"> <%=item.typename %> 【id:<%=item.id %>】</a>(文档<%=item.count %>)
+
+
+                       </li>
+                   </ol>
+                       </dt>
+
+                       <dd>
+                           <ul>
+                               <li><a href="/index/list?page=1&tid=<%=item.id %>" target="_top">预览</a></li>
+                               <li><a href="/admin/list?page=1&tid=<%=item.id %>">内容</a></li>
+
+                               <li><a href="/admin/category/add?typeid=<%=item.id %>">增加子类</a></li>
+                               <li><a href="/admin/category?update=<%=item.id %>">更改</a></li>
+                               <li><a href="/admin/category?del=<%=item.id %>"  val="<%=item.typename %> "  onclick="isdel(this.getAttribute('val'))" >删除</a></li>
+                           </ul>
+                       </dd>
+                   </dl>
+
+                   <% }) %>
+
+
+               </div>
+           </div>
+           <script>
+               $(function(){
+
+                   $("#center dl .obnNavs").each(function(i){
+                      var inx=0;
+                     var _this=$(this);
+
+                       _this.click(function(){
+                            inx++;
+              if(inx==1){
+                          var val=$("#center dl .obnNavs").eq(i).attr("data-topid")
+                           console.log("当前获取的值:",val)
+                         //  alert(i)
+
+                            $.ajax(
+                            {
+                            type: "GET",
+                            url: "/admin/category",
+                            data: {topid:val},
+
+                            success: function(data){
+                                var data=JSON.parse(data)
+
+                                  console.log("成功后返回的值:",data)
+
+                                 if(data.istrue){
+                                     _this.after("<div class='sulbox'><ul></ul></div>")   ;
+                                      var objdata= data['data'];
+                                     var html=''
+                                     objdata.forEach(function(v,k){
+ html+=`<dl> <dt><ol><li><a href="/admin/list?page=1&tid=${v.id}"> ${v.typename} 【id: ${v.id}】</a>(文档 ${v.count})</li></ol></dt><dd><ul> <li><a href="/index/list?page=1&typeid=${v.id}">预览</a></li>
+<li><a href="/admin/list?page=1&tid=${v.id}">内容</a></li><li><a href="/admin/category/add?typeid=${v.id}">增加子类</a></li><li><a href="/admin/category?update=${v.id}">更改</a></li>
+<li><a href="/admin/category?del=${v.id}" val="${v.typename} " onclick="isdel(this.getAttribute('val'))">删除</a></li></ul></dd></dl>
+ `
+                                     })
+
+                                     _this.siblings(".sulbox").append(html)
+                                     _this.siblings(".sulbox").parent("li").css({
+                                         height:  parseInt($(".sulbox").css("height"))+20+"px"
+                                     })
+
+
+                                 }  else {
+                                     return false
+                                 }
+                            }
+                            }
+                            )
+               }else if(inx==2){
+                  _this.siblings(".sulbox").css("display","none") ;
+                  _this.siblings(".sulbox").parent("li").css({
+                      height: "20px"
+                  })
+                 // inx=0;
+              }  else {
+                  if(inx%2){
+                      _this.siblings(".sulbox").css("display","block") ;
+                      _this.siblings(".sulbox").parent("li").css({
+                          height:  parseInt(_this.siblings(".sulbox").css("height"))+20+"px"
+                      })
+                  } else {
+                      _this.siblings(".sulbox").css("display","none") ;
+                      _this.siblings(".sulbox").parent("li").css({
+                          height: "20px"
+                      })
+                  }
+              }
+
+
+                    })
+
+                   })
+
+
+
+
+               })
+           </script>
+
+</body>
+</html>
+
+<style>
+    li{list-style: none; text-decoration: none}
+    a{text-decoration: none}
+          #top>div:first-child a{ color: white}
+    #center{background: white;padding-bottom: 30px;}
+  #center dl{display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed rgba(0,0,0,0.2)}
+    #center dl dt ol{display: flex}
+    #center dl dd ul{display: flex}
+    #center dl dd li{margin-right: 15px; }
+    #center dl a{color: black;}
+    #top{
+        display: flex;
+        justify-content: space-between;  align-items: center;
+        color: rgb(234, 224, 224);
+        height: 28px;
+        background-image: url(http://4g.shenyangsjnk.com/_maxima_ad/images/tbg.gif);
+    }
+    #top>div:first-child{   background: rgb(47, 79, 79);     border-radius: 7px;
+        padding: 2px;
+        box-shadow: 2px 2px 2px rgba(0,0,0,0.1);}
+    .topul ul{overflow: hidden}
+    .topul li {
+
+        margin-left: 15px;
+        float: left;
+        background: rgb(47, 79, 79);
+        border-radius: 7px;
+        padding: 2px;
+        box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+    }
+    .topul li a{color: rgb(234, 224, 224);  font-size: 16px; padding: 10px}
+
+
+
+    .sulbox {
+        position: absolute;
+        overflow: hidden;
+        background: rgb(245, 245, 220);
+    }
+</style>
+
+
+<script>
+
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    };
+
+      function isdel(val){
+            if(window.confirm('是否删除'+val+'栏目'))  {
+                     setTimeout(function(){
+                         console.log("执行了删除")
+                      //   window.location.assign("/admin/category")
+                     },1000)
+            }
+      }
+
+
+</script>

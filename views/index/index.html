@@ -1,0 +1,606 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title><%= webappName%></title>
+    <meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+	<meta name="author"  content="朱建伟">
+	<base target="_blank" />
+	
+	<!-- css  ------->
+	<link rel="stylesheet" href="foreView/css/reset.css">
+	<link rel="stylesheet" href="foreView/css/public.css">
+	<link rel="stylesheet" href="foreView/css/index.css">
+
+	<!-----js------------>
+	<script src="foreView/js/jquery.js"></script>
+	<script src="foreView/js/js.js"></script>
+	<script src="/foreView/swt/click_tj.js"></script>
+	<script src="/foreView/swt/publictel.js"></script>
+</head>
+<body>
+
+
+
+
+	<!---公共头部--------------->
+	      <%include head.html%>
+<!-----------主体内容部分----------->
+
+<article id="content">
+
+
+	<div class="wenbox">
+		<!--医院公告------------------>
+	<div class="box">
+		<div class="boxtitle"> 
+		<h2>医院公告<span>/Notice</span></h2>
+		
+		</div>
+		
+		<ul class="arclist">
+			     <% Data["data39"].forEach(function(item){%>
+			<li><a href="/index/article?aid=<%= item.id%>"><%= item.title%></a></li>
+			     <%}) %>
+		</ul>
+	</div>
+	<!---中间广告图----------------->
+		<div class="imgbox margin">
+		
+		 <ul class="imglist">
+		 	<li>
+		 		<img src="foreView/images/1.jpg" alt="">
+		 	</li>
+		 		<li>
+		 		<img src="foreView/images/2.jpg" alt="">
+		 	</li>
+		 		<li>
+		 		<img src="foreView/images/3.jpg" alt="">
+		 	</li>
+		 		<li>
+		 		<img src="foreView/images/4.jpg" alt="">
+		 	</li>
+		 		<li>
+		 		<img src="foreView/images/5.jpg" alt="">
+		 	</li>
+		 </ul>
+		
+		
+		
+	</div>
+	
+	<!--媒体报道------------------->
+		<div class="box margin" >
+		<div class="boxtitle"> 
+		<h2>媒体报道<span>/Notice</span></h2>
+		
+		</div>
+		
+		<ul class="arclist">
+			<% Data["data41"].forEach(function(item){%>
+			<li><a href="/index/article?aid=<%= item.id%>"><%= item.title%></a></li>
+			<%}) %>
+		</ul>
+	</div>
+	</div>
+	
+
+<!-----横幅广告------------->
+<div class="wenbox"  onclick="onClickSWT();return false">
+<img src="foreView/images/g1.jpg" alt="">
+</div>
+	
+<!-----沈阳沈医医院精神疾病特色诊疗中心------------->	
+
+	<section class="divbox">
+	<!--大标题--->
+		<div class="divboxTitle">
+			<div>
+				<img src="foreView/images/icon.png" alt="">
+				<span>沈阳沈医医院精神疾病特色诊疗中心</span>
+			</div>
+			<div class="hover1">点击咨询</div>
+		</div>
+		
+	<!--核心内容--->	
+	<div class="divboxCon">
+		<div class="divboxConL">
+		  <ul class="obnlist" id="obnlist">
+		  	<li>失眠症</li>
+		  	<li>躁狂症</li>
+		  	<li>精神分裂</li>
+		  	<li>焦虑症</li>
+		  	<li>强迫症</li>
+		  	<li>精神障碍</li>
+		  	<li>神经衰弱</li>
+		  </ul>
+		  
+		  <div id="conlist">
+		  <!--num1  失眠症-->
+		  	<div class="con">
+		  		<div class="conL">
+	<a href="/index/article?tid=<%=Data.data35[Data.data35.length-1].typeid%>&aid=<%=Data.data35[Data.data35.length-1].id%> ">
+		<img src="	<%=Data.data35[Data.data35.length-1].thumbnail%>" alt=""> </a>
+				</div>
+		  		<div class="conR">
+
+		  			<h3><%=Data.data35[Data.data35.length-1].title%></h3>
+		  			<div class="descript">
+						    <% if(Data.data35[Data.data35.length-1].descriptions) {  %>
+						<%=Data.data35[Data.data35.length-1].descriptions%>  ...
+						<a href="/index/article?tid=<%=Data.data23[Data.data35.length-1].typeid%>&aid=<%=Data.data35[Data.data35.length-1].id%> ">【详情】</a>
+					                    <% } else{ %>
+						           <span>当前描述不存在</span>  <a href="/index/article?tid=<%=Data.data35[Data.data35.length-1].typeid%>&aid=<%=Data.data35[Data.data35.length-1].id%> ">【详情】</a>
+						<% }  %>
+					</div>
+
+
+
+		  			<ul class="arclist  tese">
+
+						<%  var data35=Data.data35.slice(0,Data.data35.length-1);   data35.forEach(function(item){     %>
+		  			<li><a href="/index/article?tid=<%= item.typeid%>&aid=<%= item.id%>"><%=item.title%></a> <span><%=item.date%></span></li>
+	                      <%}) %>
+		  			</ul>
+		  		</div>
+		  	</div>
+		  	
+		  		  <!--num2 抑郁症-->
+		  	<div class="con">
+		  		<div class="conL">
+
+					<a href="/index/article?tid=<%=Data.data23[Data.data23.length-1].typeid%>&aid=<%=Data.data23[Data.data23.length-1].id%> ">
+						<img src="	<%=Data.data23[Data.data23.length-1].thumbnail%>" alt=""> </a>
+
+				</div>
+		  		<div class="conR">
+					<h3><%=Data.data23[Data.data23.length-1].title%></h3>
+					<div class="descript">
+						<% if(Data.data23[Data.data23.length-1].descriptions) {  %>
+						<%=Data.data23[Data.data23.length-1].descriptions%>  ...
+						<a href="/index/article?tid=<%=Data.data23[Data.data23.length-1].typeid%>&aid=<%=Data.data23[Data.data23.length-1].id%> ">【详情】</a>
+						<% } else{ %>
+						<span>当前描述不存在</span>  <a href="/index/article?tid=<%=Data.data23[Data.data23.length-1].typeid%>&aid=<%=Data.data23[Data.data23.length-1].id%> ">【详情】</a>
+						<% }  %>
+					</div>
+
+		  			<ul class="arclist  tese">
+						<%  var data23=Data.data23.slice(0,Data.data23.length-1);   data23.forEach(function(item){     %>
+						<li><a href="/index/article?tid=<%= item.typeid%>&aid=<%= item.id%>"><%=item.title%></a> <span><%=item.date%></span></li>
+						<%}) %>
+		  			</ul>
+		  		</div>
+		  	</div>
+		  	
+		  	 		  <!--num3 精神分裂-->
+		  	<div class="con">
+		  		<div class="conL">
+					<a href="/index/article?tid=<%=Data.data24[Data.data24.length-1].typeid%>&aid=<%=Data.data24[Data.data24.length-1].id%> ">
+						<img src="	<%=Data.data24[Data.data24.length-1].thumbnail%>" alt=""> </a>
+				</div>
+		  		<div class="conR">
+					<h3><%=Data.data24[Data.data24.length-1].title%></h3>
+					<div class="descript">
+						<% if(Data.data24[Data.data24.length-1].descriptions) {  %>
+						<%=Data.data24[Data.data24.length-1].descriptions%>  ... <a href="/index/article?tid=<%=Data.data24[Data.data24.length-1].typeid%>&aid=<%=Data.data24[Data.data24.length-1].id%> ">【详情】</a>
+						<% } else{ %>
+						<span>当前描述不存在</span>  <a href="/index/article?tid=<%=Data.data24[Data.data24.length-1].typeid%>&aid=<%=Data.data24[Data.data24.length-1].id%> ">【详情】</a>
+						<% }  %>
+					</div>
+
+
+		  			<ul class="arclist  tese">
+						<%  var data24=Data.data24.slice(1,Data.data24.length-1);   data24.forEach(function(item){     %>
+						<li><a href="/index/article?tid=<%= item.typeid%>&aid=<%= item.id%>"><%=item.title%></a> <span><%=item.date%></span></li>
+						<%}) %>
+		  			</ul>
+		  		</div>
+		  	</div>
+
+		  	 		  <!--num4 焦虑症-->
+		  	<div class="con">
+		  		<div class="conL">
+					<a href="/index/article?tid=<%=Data.data38[Data.data38.length-1].typeid%>&aid=<%=Data.data38[Data.data38.length-1].id%> "><img src="	<%=Data.data38[Data.data38.length-1].thumbnail%>" alt=""> </a>
+				</div>
+		  		<div class="conR">
+					<h3><%=Data.data38[Data.data38.length-1].title%></h3>
+					<div class="descript">
+						<% if(Data.data38[Data.data38.length-1].descriptions) {  %>
+						<%=Data.data38[Data.data38.length-1].descriptions%>  ... <a href="/index/article?tid=<%=Data.data38[Data.data38.length-1].typeid%>&aid=<%=Data.data38[Data.data38.length-1].id%> ">【详情】</a>
+						<% } else{ %>
+						<span>当前描述不存在</span>  <a href="/index/article?tid=<%=Data.data38[Data.data38.length-1].typeid%>&aid=<%=Data.data38[Data.data38.length-1].id%> ">【详情】</a>
+						<% }  %>
+					</div>
+		  			<ul class="arclist  tese">
+						<%  var data38=Data.data38.slice(1,Data.data38.length);   data38.forEach(function(item){     %>
+						<li><a href="/index/article?tid=<%= item.typeid%>&aid=<%= item.id%>"><%=item.title%></a> <span><%=item.date%></span></li>
+						<%}) %>
+		  			</ul>
+		  		</div>
+		  	</div>
+		  	
+		  		 		  <!--num5强迫症-->
+		  	<div class="con">
+		  		<div class="conL">
+					<a href="/index/article?tid=<%=Data.data22[Data.data22.length-1].typeid%>&aid=<%=Data.data22[Data.data22.length-1].id%> "><img src="	<%=Data.data22[Data.data22.length-1].thumbnail%>" alt=""> </a>
+				</div>
+		  		<div class="conR">
+					<h3><%=Data.data22[Data.data22.length-1].title%></h3>
+					<div class="descript">
+						<% if(Data.data22[Data.data22.length-1].descriptions) {  %>
+						<%=Data.data22[Data.data22.length-1].descriptions%>  ... <a href="/index/article?tid=<%=Data.data22[Data.data22.length-1].typeid%>&aid=<%=Data.data22[Data.data22.length-1].id%> ">【详情】</a>
+						<% } else{ %>
+						<span>当前描述不存在</span>  <a href="/index/article?tid=<%=Data.data22[Data.data22.length-1].typeid%>&aid=<%=Data.data22[Data.data22.length-1].id%> ">【详情】</a>
+						<% }  %>
+					</div>
+		  			<ul class="arclist  tese">
+						<%  var data22=Data.data22.slice(1,Data.data22.length-1);   data22.forEach(function(item){     %>
+						<li><a href="/index/article?tid=<%= item.id%>&aid=<%= item.id%>"><%=item.title%></a> <span><%=item.date%></span></li>
+						<%}) %>
+		  			</ul>
+		  		</div>
+		  	</div>
+		  			 		  <!--num6 精神障碍-->
+		  	<div class="con">
+		  		<div class="conL">
+					<a href="/index/article?tid=<%=Data.data26[Data.data26.length-1].typeid%>&aid=<%=Data.data26[Data.data26.length-1].id%> "><img src="	<%=Data.data26[Data.data26.length-1].thumbnail%>" alt=""> </a>
+				</div>
+		  		<div class="conR">
+					<h3><%=Data.data26[Data.data26.length-1].title%></h3>
+					<div class="descript">
+						<% if(Data.data26[Data.data26.length-1].descriptions) {  %>
+						<%=Data.data26[Data.data26.length-1].descriptions%>  ... <a href="/index/article?tid=<%=Data.data26[Data.data26.length-1].typeid%>&aid=<%=Data.data26[Data.data26.length-1].id%> ">【详情】</a>
+						<% } else{ %>
+						<span>当前描述不存在</span>  <a href="/index/article?tid=<%=Data.data26[Data.data26.length-1].typeid%>&aid=<%=Data.data26[Data.data26.length-1].id%> ">【详情】</a>
+						<% }  %>
+					</div>
+		  			<ul class="arclist  tese">
+						<%  var data26=Data.data26.slice(1,Data.data26.length);   data26.forEach(function(item){     %>
+						<li><a href="/index/article?tid=<%= item.typeid%>&aid=<%= item.id%>"><%=item.title%></a> <span><%=item.date%></span></li>
+						<%}) %>
+		  			</ul>
+		  		</div>
+		  	</div>
+		  			 		  <!--num7 心理障碍-->
+		  	<div class="con">
+		  		<div class="conL">
+					<a href="/index/article?tid=<%=Data.data18[Data.data18.length-1].typeid%>&aid=<%=Data.data18[Data.data18.length-1].id%> "><img src="	<%=Data.data18[Data.data18.length-1].thumbnail%>" alt=""> </a>
+				</div>
+		  		<div class="conR">
+					<h3><%=Data.data18[Data.data18.length-1].title%></h3>
+					<div class="descript">
+						<% if(Data.data18[Data.data18.length-1].descriptions) {  %>
+						<%=Data.data18[Data.data18.length-1].descriptions%>  ... <a href="/index/article?tid=<%=Data.data18[Data.data18.length-1].typeid%>&aid=<%=Data.data18[Data.data18.length-1].id%> ">【详情】</a>
+						<% } else{ %>
+						<span>当前描述不存在</span>  <a href="/index/article?tid=<%=Data.data18[Data.data18.length-1].typeid%>&aid=<%=Data.data18[Data.data18.length-1].id%> ">【详情】</a>
+						<% }  %>
+					</div>
+		  			<ul class="arclist  tese">
+						<%  var data18=Data.data18.slice(1,Data.data18.length);   data18.forEach(function(item){     %>
+						<li><a href="/index/article?tid=<%= item.typeid%>&aid=<%= item.id%>"><%=item.title%></a> <span><%=item.date%></span></li>
+						<%}) %>
+		  			</ul>
+		  		</div>
+		  	</div>
+		  </div>
+		</div>
+		<!--热门问答--------->
+		<div class="divboxConR">
+		   <dl>
+		   	<dt>
+		   		<h3><img src="foreView/images/i21.png" alt=""> 热门问答</h3>
+		   	</dt>
+		   	<dd>
+		   		<ul class="asklist">
+		   			<li><span>Q1</span><a href="#">失眠的日常调理方法?</a></li>
+		   			<li><span>Q2</span><a href="#">治疗精神疾病哪家医院好?</a></li>
+		   			<li><span>Q3</span><a href="#">怎样判断自己得了抑郁症?</a></li>
+		   			<li><span>Q4</span><a href="#">治疗抑郁症需要多少钱?</a></li>
+		   		</ul>
+		   		
+		   	<dl class="lastask">
+		   			<dt><span>Q5</span><a href="#">失眠的危害有哪些?</a></dt>
+		   			<dd>
+		   				我我我哦我我我我我我我我我我我我我我哦我我我我我我我哦呜我我我我哦呜我我我我哦呜...【详情】
+		   			</dd>
+		   	</dl>
+		   		
+		   		<div>
+		   			
+		   		</div>
+		   	</dd>
+		   </dl>
+		
+		</div>
+		
+		
+	</div>
+		
+	</section>	
+	
+<!-----弘扬医学奉献精神 促进医德医风建设------------->		
+	<section class="divbox">
+	<!--大标题--->
+		<div class="divboxTitle">
+			<div>
+				<img src="foreView/images/icon.png" alt="">
+				<span>弘扬医学奉献精神 促进医德医风建设</span>
+			</div>
+			<div class="hover1">点击咨询</div>
+		</div>
+		
+	<!--核心内容--->	
+	<div class="divboxCon" style="margin-top: 0">
+	<!---- num1  公益活动-->
+	<div class="hybox">
+		 <div class="hyboxtitle">
+		 	<h2><img src="foreView/images/t1.png" alt="">医师风采 </h2>
+		 	<p>volunteer activity</p>
+		 </div>
+		 
+		  <dl>
+		  	<dt>
+				<a href="/index/article?tid=<%=Data.data4[Data.data4.length-1].typeid%>&aid=<%=Data.data4[Data.data4.length-1].id%> "><img src="	<%=Data.data4[Data.data4.length-1].thumbnail%>" alt=""> </a>
+			</dt>
+		  	<dd>
+		  		<ul>
+					<%  var data4=Data.data4.slice(0,Data.data4.length-1);   data4.forEach(function(item){     %>
+		  			<li>
+		  				<a href="/index/article?tid=<%= item.typeid%>&aid=<%= item.id%>"> <span>&gt;</span> <%=item.title%> </a>
+		  			</li>
+					<%}) %>
+		  		</ul>
+		  	</dd>
+		  </dl>
+	</div>
+	
+	
+		<!---- num2 党政建设-->
+	<div class="hybox">
+		 <div class="hyboxtitle">
+		 	<h2><img src="foreView/images/t2.png" alt="">权威专家 </h2>
+		 	<p>volunteer activity</p>
+		 </div>
+		 
+		  <dl>
+		  	<dt>	<a href="/index/article?tid=<%=Data.data3[Data.data3.length-1].typeid%>&aid=<%=Data.data3[Data.data3.length-1].id%> ">
+				<img src="	<%=Data.data3[Data.data3.length-1].thumbnail%>" alt=""> </a></dt>
+		  	<dd>
+		  		<ul>
+					<%  var data3=Data.data3.slice(0,Data.data3.length-1);   data3.forEach(function(item){     %>
+					<li>
+						<a href="/index/article?tid=<%= item.typeid%>&aid=<%= item.id%>"> <span>&gt;</span> <%=item.title%> </a>
+					</li>
+					<%}) %>
+		  		</ul>
+		  	</dd>
+		  </dl>
+	</div>
+		<!---- num3  健康科普-->
+	<div class="hybox">
+		 <div class="hyboxtitle">
+		 	<h2><img src="foreView/images/t3.png" alt="">最新技术 </h2>
+		 	<p>volunteer activity</p>
+		 </div>
+		 
+		  <dl>
+		  	<dt>	<a href="/index/article?tid=<%=Data.data5[Data.data5.length-1].typeid%>&aid=<%=Data.data5[Data.data5.length-1].id%> "><img src="	<%=Data.data5[Data.data5.length-1].thumbnail%>" alt=""> </a></dt>
+		  	<dd>
+		  		<ul>
+					<%  var data5=Data.data5.slice(0,Data.data5.lenth);   data5.forEach(function(item){     %>
+					<li>
+						<a href="/index/article?tid=<%= item.typeid%>&aid=<%= item.id%>"> <span>&gt;</span> <%=item.title%> </a>
+					</li>
+					<%}) %>
+		  		</ul>
+		  	</dd>
+		  </dl>
+	</div>
+		</div>
+		
+		</section>	
+	
+	
+<!-----临床诊疗、心理咨询诊疗专家------------>		
+	<section class="divbox">
+	<!--大标题--->
+		<div class="divboxTitle">
+			<div>
+				<img src="foreView/images/icon.png" alt="">
+				<span>临床诊疗、心理咨询诊疗专家</span>
+			</div>
+			<div class="hover1">点击咨询</div>
+		</div>
+		
+	<!--核心内容--->	
+	<div class="divboxCon">
+	  
+   	      <!--左侧z专家介绍-->
+ <div class="zjbox">
+	   	   
+	   	    <div class="zjleft">
+	   	   	<img src="foreView/images/i1.jpg" alt="">
+	   	    </div>
+	   	   
+	   	    <div class="zjright">
+	   	
+   	         <div><h3>洪 磊<span>教授</span></h3></div>
+   	         <div>
+   	         	<p>上海市精神卫生中心专家</p>
+   	         	<p>上海市精神卫生中心专家</p>
+   	         </div>
+   	   
+   	        <div>
+   	   	擅长领域：睡眠障碍、抑郁症、精神分裂、焦虑强迫等多种精神心理疾病。
+   	        </div>
+   	      
+   	       <div>
+   	       	医生简介：洪磊主任，2003年到德国Freiburg大学医学中心进修脑神经递质与心理障碍从事精神疾病...
+   	       	<a href="#" onclick="onClickSWT();return false">【详情】</a>
+   	       </div>
+   	   
+   	   
+   	   <div>
+   	          <button onclick="onClickSWT();return false"><img src="foreView/images/tel1.png" alt="">在线咨询</button>
+   	            <button onclick="publictel()"><img src="foreView/images/tel2.png" alt="">预约专家</button>
+   	   </div>
+	   	   </div>
+ </div>
+	
+	<!----医师风采----->
+	<div class="ysfc">
+		<h2><img src="foreView/images/r.png" alt="">医师风采  <span>查看治愈案例+</span></h2>
+		<div class="ysfcImg">
+
+			<a href="/index/article?tid=<%=Data.data4[0].typeid%>&aid=<%=Data.data4[0].id%> "><img src="	<%=Data.data4[0].thumbnail%>" alt=""> </a>
+
+		</div>
+		<div class="ysfcDesc">
+
+			<% if(Data.data4[0].descriptions) {  %>
+			<%=Data.data4[0].descriptions%>  ... <a href="/index/article?tid=<%=Data.data4[0].typeid%>&aid=<%=Data.data4[0].id%> ">查看详情→</a>
+			<% } else{ %>
+			<span>当前描述不存在</span>  <a href="/index/article?tid=<%=Data.data4[0].typeid%>&aid=<%=Data.data4[0].id%> ">查看详情→</a>
+			<% }  %>
+
+
+
+		</div>
+	</div>
+	
+		</div>
+		
+		
+</section>
+	
+	
+	
+<!-----------一睹医院风采------------------------*******************--->
+	
+		<section class="divbox">
+	<!--大标题--->
+		<div class="divboxTitle">
+			<div>
+				<img src="foreView/images/icon.png" alt="">
+				<span>一睹医院风采</span>
+			</div>
+			<div class="hover1">点击咨询</div>
+		</div>
+		
+	<!--核心内容--->	
+	<div class="divboxCon">
+		
+		     <!--left-->
+		<div class="fcLeft">
+		<ul class="fcObnlist">
+			<li>
+				医院环境
+			</li>
+			
+			<li>
+				荣誉支持
+			</li>
+		</ul>
+		
+	<div class="fcList">
+			<!-- 医院环境--->
+				<div class="fcbox">
+					<ul>
+						<li>
+							<img src="foreView/images/hj1.jpg" alt="" onClick="alert(1)">
+						</li>
+						<li>
+							<img src="foreView/images/hj2.jpg" alt="">
+						</li>
+						<li>
+							<img src="foreView/images/hj3.jpg" alt="">
+						</li>
+						<li>
+							<img src="foreView/images/hj4.jpg" alt="">
+						</li>
+						<li>
+							<img src="foreView/images/hj5.jpg" alt="">
+						</li>
+						<li>
+							<img src="foreView/images/hj6.jpg" alt="">
+						</li>
+					</ul>
+				</div>	
+				
+					<!-- 荣誉支持--->
+				<div class="fcbox">
+					<ul>
+						<li>
+							<img src="foreView/images/ry1.jpg" alt="">
+						</li>
+						<li>
+							<img src="foreView/images/ry2.jpg" alt="">
+						</li>
+						<li>
+							<img src="foreView/images/ry3.jpg" alt="">
+						</li>
+						<li>
+							<img src="foreView/images/ry4.jpg" alt="">
+						</li>
+						<li>
+							<img src="foreView/images/ry5.jpg" alt="">
+						</li>
+						<li>
+							<img src="foreView/images/ry6.jpg" alt="">
+						</li>
+					</ul>
+				</div>		
+	</div>				
+		</div>
+		
+		
+		  <!--mid-->
+		
+			<div class="fcMid">
+		 <!---num1  --->
+		  <div class="fcXiji">
+		 <div id="tupian"><img src="foreView/images/h2.jpg" alt=""></div>
+		 <div id="jianjies">我我我我我哦我我我我我我我我我我我我哦我我我我哦我我我我我我我我我我我我我哦我我我我哦我我我我我我我我我我我我我哦我我我我哦我我我我我我我我我我我我我
+		  </div>
+		  </div>
+		
+			</div>
+			
+			<!---right-->
+			<div class="fcRight">
+				<p><img src="foreView/images/yy.png" alt=""> 医院地图</p>
+				<p><img src="foreView/images/d.png" alt=""></p>
+				<p>医院地址：沈北新区道义南大街50号</p>
+			</div>
+		
+			</div>
+</section>
+	
+	
+	
+<!-----------友情链接------------------------*******************--->	
+	
+		<section class="divbox">
+		
+	<!--核心内容--->	
+      <div class="flinkbox">
+      	<h3>友情链接</h3>
+      	<ul class="flink">
+
+			<%flinkData.forEach(function(item){%>
+			<li><a href="http://<%= item.url%>"><%= item.webname%></a></li>
+             <% }) %>
+      	</ul>
+      </div>
+</section>
+	
+</article>
+
+<!-- 公共底部--->
+<%include foot.html%>
+</body>
+</html>

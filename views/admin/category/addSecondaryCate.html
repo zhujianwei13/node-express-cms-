@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加顶级栏目</title>
+    <script src="/backView/js/jquery-1.4.4.min.js"></script>
+</head>
+<body>
+
+<div class="searchNav">
+    <ul>
+        <li><a href="/admin/category">网站管理</a> &gt;&gt;</li>
+        <li><a href="/admin/category/addTopCate">增加栏目</a></li>
+    </ul>
+</div>
+
+
+
+<div class="box">
+    <form action="/admin/category/add" target="" method="post"  enctype="application/x-www-form-urlencoded">
+
+        <table>
+            <tr><td><input type="hidden" value="<%=topid%>"  name="topid"></td></tr>
+            <tr>
+                <td><label for="typename">栏目名称:</label></td>
+                <td><input type="text" name="typename" about="" id="typename"></td>
+            </tr>
+
+            <tr>
+                <td><label for="keywords">关键字:</label></td>
+                <td><input type="text" name="keywords"  id="keywords"></td>
+            </tr>
+            <tr>
+                <td><label for="description">栏目描述:</label></td>
+                <td><input type="text" name="description"  id="description"></td>
+            </tr>
+            <tr>
+                <td><label for="sort">栏目顺序:</label></td>
+                <td><input type="number" name="sort"  id="sort"  defaultValue="0"></td>
+            </tr>
+            <tr style="display: flex; justify-content: flex-start">
+                <td><label for="idenfy">是否显示:</label></td>
+                <td style="margin-left: 30px"><input type="radio"  name="idenfy"  id="idenfy"  ></td>
+            </tr>
+
+            <tr>
+                <td><button type="submit">提交</button></td>
+
+            </tr>
+        </table>
+
+
+    </form>
+
+</div>
+
+<style>
+    *{ margin: 0px; padding: 0}
+    a{text-decoration: none; color: black}
+    li{list-style: none}
+    body{
+        width: 100%;
+        height: 100%;
+        background: rgb(255, 255, 255);
+    }
+    .searchNav{ height: 28px;
+        background-image: url(http://4g.shenyangsjnk.com/_maxima_ad/images/tbg.gif);
+    }
+    .searchNav ul{overflow: hidden}
+    .searchNav ul li{float: left;margin-left: 16px; font-size: 16px;}
+
+    .box {
+        width: 100%;
+        height: 100%;
+        background: rgb(255, 255, 255);
+    }
+    table{width: 80%; margin: 20px auto;
+        padding: 30px 0;
+
+    }
+
+
+    input{ width: 300px; height:35px;line-height: 35px;}
+    input[type='radio']{width: 32px;}
+    .box tr {
+        margin-top: 19px;
+        display: flex;
+        justify-content: space-between;
+        width: 51%;
+    }
+    .box button{     padding: 10px 70px;
+        font-size: 18px;
+        border: none;
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+        color: rgb(193, 103, 103);
+        font-weight: bold;
+        font-family: "黑体";}
+</style>
+
+</body>
+</html>
+<script>
+
+    $(function(){
+
+        //是否显示效果
+        (function(){
+            var v=0;
+            $("#idenfy").click(function(){
+                v++ ;
+                if(v%2){
+                    $(this).attr('checked',true)    ;
+                }  else {
+                    $(this).attr('checked',false)
+                }
+            });
+
+        })("20171222","朱建伟")
+
+
+
+    })
+</script>
